@@ -1,6 +1,4 @@
-## Mangali Bhavya
 
-````markdown
 # 🌸 Aniflix - DevOps Assignment ✅  
 _Anime Streaming Platform - Where Entertainment Meets Engineering_
 
@@ -165,10 +163,10 @@ This project is created as part of a DevOps internship/academic assignment.
 
 ---
 
-## 🌸 Aniflix DevOps Team
+## 🌸 Aniflix DevOps 
 
-DevOps Enthusiast: Mangali Bhavya
-Bringing Anime Streaming to the Cloud ☁️🐳
+## DevOps Enthusiast: Mangali Bhavya
+## Bringing Anime Streaming to the Cloud ☁️🐳
 
-🎊 **DEPLOYMENT STATUS: LIVE AND RUNNING ON AWS EC2** 🎊
+
 
