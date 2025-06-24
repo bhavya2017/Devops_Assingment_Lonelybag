@@ -102,8 +102,6 @@ aws s3 ls
 
 ---
 
-## ✅ Done!
-
 
 ![image](https://github.com/user-attachments/assets/38ad8f2f-59f1-4f2a-8355-c6a2bab3d8a9)
 
