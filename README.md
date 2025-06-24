@@ -10,6 +10,7 @@ Containerized a PHP-based anime web app ("Aniflix") using Docker, deployed on AW
 - `index.php`, `handlers/`, `media/`, etc. – web app code
 
 ---
+![image](https://github.com/user-attachments/assets/38ad8f2f-59f1-4f2a-8355-c6a2bab3d8a9)
 
 ## Local Docker Setup
 
@@ -18,4 +19,4 @@ git clone https://github.com/your-username/aniflix-devops.git
 cd aniflix-devops
 docker build -t aniflix-app .
 docker run -d -p 8080:80 --name aniflix-container aniflix-app
-![image](https://github.com/user-attachments/assets/af872da4-145e-415b-b525-eead026414d6)
+
