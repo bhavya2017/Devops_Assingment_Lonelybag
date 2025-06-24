@@ -15,22 +15,6 @@ Aniflix is a PHP-based anime-themed web application. This project demonstrates h
 
 ---
 
-## 📁 Project Structure
-
-```
-
-Aniflix/
-├── index.php
-├── handlers/
-├── media/
-├── scripts/
-├── Dockerfile
-├── deploy.sh
-├── cloud-init.yaml
-├── README.md
-
-````
-
 ---
 
 ## 🚀 Run Locally with Docker
