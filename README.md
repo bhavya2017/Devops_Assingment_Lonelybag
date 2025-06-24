@@ -1,5 +1,5 @@
 
-# 🌸 Aniflix - DevOps Assignment ✅  
+#  Aniflix - DevOps Assignment ✅  
 _Anime Streaming Platform - Where Entertainment Meets Engineering_
 
 ---
