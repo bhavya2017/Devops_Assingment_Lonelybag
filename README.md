@@ -1,84 +1,104 @@
-# Mangali Bhavya
+## Mangali Bhavya
 
-# Aniflix – Dockerized Anime Web App Deployment
-
-Aniflix is a PHP-based anime-themed web application. This project demonstrates how to containerize it using Docker and deploy it on an AWS EC2 instance with automation using shell scripts and cloud-init.
-
----
-
-## 🔧 Technologies Used
-- PHP + Apache
-- Docker
-- AWS EC2 (Ubuntu 22.04)
-- Git
-- IAM + S3 (optional)
+````markdown
+# 🌸 Aniflix - DevOps Assignment ✅  
+_Anime Streaming Platform - Where Entertainment Meets Engineering_
 
 ---
 
+## 🎯 Assignment Overview
+This project demonstrates a full DevOps workflow for a PHP-based anime-themed web app — including containerization, cloud deployment, automation, and AWS service integration.
+
 ---
 
-## 🚀 Run Locally with Docker
+## 🏗️ Architecture  
+- **Frontend:** PHP + HTML + JS  
+- **Backend:** Apache + PHP  
+- **Styling:** CSS  
+- **Containerization:** Docker (Apache-based)  
+- **Deployment:** AWS EC2 (Ubuntu 22.04)  
+- **Automation:** deploy.sh & cloud-init  
+- **IAM Integration:** EC2 access to S3  
+
+---
+
+## 📋 Assignment Deliverables  
+
+### ✅ 1. GitHub Repository Setup  
+- Codebase pushed to GitHub  
+- Version control implemented  
+- Dockerfile, deploy script, cloud-init, and README present  
+
+### ✅ 2. Dockerization  
+- PHP web app containerized using `php:8.2-apache`  
+- Dockerfile includes `mysqli` and `mod_rewrite`  
+- App builds and runs inside a container  
 
 ```bash
-git clone https://github.com/your-username/aniflix-devops.git
-cd aniflix-devops
 docker build -t aniflix-app .
 docker run -d -p 8080:80 aniflix-app
 ````
 
-Open: [http://localhost:8080](http://localhost:8080)
+### ✅ 3. AWS EC2 Deployment
 
----
-
-## ☁️ Deploy on AWS EC2 (Manual)
-
-1. Launch Ubuntu EC2
-2. Open ports 22 (SSH) and 80 (HTTP)
-3. SSH into EC2:
+* EC2 instance created (Ubuntu 22.04, t2.micro)
+* Docker and Git installed
+* App deployed via Docker and accessed via public IP
 
 ```bash
-ssh -i your-key.pem ubuntu@<EC2_PUBLIC_IP>
-```
-
-4. Install Docker and Git:
-
-```bash
-sudo apt update
-sudo apt install docker.io git -y
-```
-
-5. Clone repo and run app:
-
-```bash
+ssh -i your-key.pem ubuntu@<EC2_IP>
 git clone https://github.com/your-username/aniflix-devops.git
 cd aniflix-devops
 sudo docker build -t aniflix-app .
 sudo docker run -d -p 80:80 aniflix-app
 ```
 
-Open: `http://<EC2_PUBLIC_IP>`
+✅ Accessible at: `http://<EC2_PUBLIC_IP>`
 
 ---
 
-## ⚙️ deploy.sh (Automated Setup)
+## ⚙️ 4. Automation & Bonus Features
+
+### ✅ cloud-init Setup
+
+Automates Docker installation and deployment during EC2 boot:
+
+```yaml
+#cloud-config
+package_update: true
+packages:
+  - docker.io
+  - git
+runcmd:
+  - systemctl start docker
+  - systemctl enable docker
+  - git clone https://github.com/your-username/aniflix-devops.git /home/ubuntu/aniflix
+  - cd /home/ubuntu/aniflix
+  - docker build -t aniflix-app .
+  - docker run -d -p 80:80 aniflix-app
+```
+
+### ✅ deploy.sh - One-click Deployment
 
 ```bash
 chmod +x deploy.sh
 ./deploy.sh
 ```
 
+Automates:
+
+* Docker install
+* Repo clone
+* Container build/run
+* Health checks
+
 ---
 
-## ⚡ cloud-init (Auto-run on EC2 boot)
+### 🔐 IAM Role + S3 Integration
 
-Paste this `cloud-init.yaml` in EC2 → Advanced Settings → User Data while launching instance.
-
----
-
-## 🔐 IAM Role for S3 (Optional)
-
-* Attach a role with `AmazonS3FullAccess`
-* Run:
+* IAM Role: `AmazonS3FullAccess`
+* Attached to EC2 (no hardcoded keys)
+* Verified using:
 
 ```bash
 aws s3 ls
@@ -86,7 +106,69 @@ aws s3 ls
 
 ---
 
+## ☁️ Cloud Platform - AWS EC2
 
-![image](https://github.com/user-attachments/assets/38ad8f2f-59f1-4f2a-8355-c6a2bab3d8a9)
+* **OS:** Ubuntu 22.04
+* **Instance:** t2.micro
+* **Ports Opened:** 22 (SSH), 80 (HTTP)
+* **Status:** ✅ Running and Healthy
+* **Security:** IAM-based access to AWS
 
+---
+
+## 🧪 Health Checks & Monitoring
+
+```bash
+docker ps
+docker logs -f aniflix-container
+docker stats aniflix-container
+```
+
+✅ Container running
+✅ Port 80 reachable
+✅ App responsive
+
+---
+
+## 🚀 Deployment Summary
+
+✅ App containerized with Docker
+✅ Deployed on EC2 with working public IP
+✅ Auto-installed with `cloud-init`
+✅ Auto-deployed with `deploy.sh`
+✅ IAM roles for secure S3 access
+✅ Fully documented with screenshots
+
+---
+
+## 🌐 Live App Access
+
+Access your app:
+📍 `http://<your-ec2-public-ip>`
+📦 Docker Container: `aniflix-container`
+
+---
+
+## 🤝 Contributing
+
+1. Fork this repo
+2. Create a branch `git checkout -b feature/amazing-anime`
+3. Commit changes `git commit -m 'Added Ghibli section'`
+4. Push branch `git push origin feature/amazing-anime`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is created as part of a DevOps internship/academic assignment.
+
+---
+
+## 🌸 Aniflix DevOps Team
+
+DevOps Enthusiast: Mangali Bhavya
+Bringing Anime Streaming to the Cloud ☁️🐳
+
+🎊 **DEPLOYMENT STATUS: LIVE AND RUNNING ON AWS EC2** 🎊
 
