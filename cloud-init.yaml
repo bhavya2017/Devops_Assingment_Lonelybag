@@ -1,0 +1,15 @@
+
+
+```yaml
+#cloud-config
+package_update: true
+packages:
+  - docker.io
+  - git
+runcmd:
+  - systemctl start docker
+  - systemctl enable docker
+  - git clone https://github.com/your-username/aniflix-devops.git /home/ubuntu/aniflix
+  - cd /home/ubuntu/aniflix
+  - docker build -t aniflix-app .
+  - docker run -d -p 80:80 aniflix-app
