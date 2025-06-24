@@ -1,22 +1,110 @@
-# Aniflix – DevOps Assignment: Dockerize & Deploy
 
-## Overview
-Containerized a PHP-based anime web app ("Aniflix") using Docker, deployed on AWS EC2, automated with cloud-init and deploy.sh, and configured AWS IAM role for S3 access.
 
-## Repo Contents
-- `Dockerfile` – builds PHP/Apache web image
-- `deploy.sh` – shell script to install Docker and deploy app
-- `cloud-init.yaml` – auto-installs Docker and deploys on EC2 boot
-- `index.php`, `handlers/`, `media/`, etc. – web app code
+# Aniflix – Dockerized Anime Web App Deployment
+
+Aniflix is a PHP-based anime-themed web application. This project demonstrates how to containerize it using Docker and deploy it on an AWS EC2 instance with automation using shell scripts and cloud-init.
 
 ---
-![image](https://github.com/user-attachments/assets/38ad8f2f-59f1-4f2a-8355-c6a2bab3d8a9)
 
-## Local Docker Setup
+## 🔧 Technologies Used
+- PHP + Apache
+- Docker
+- AWS EC2 (Ubuntu 22.04)
+- Git
+- IAM + S3 (optional)
+
+---
+
+## 📁 Project Structure
+
+```
+
+Aniflix/
+├── index.php
+├── handlers/
+├── media/
+├── scripts/
+├── Dockerfile
+├── deploy.sh
+├── cloud-init.yaml
+├── README.md
+
+````
+
+---
+
+## 🚀 Run Locally with Docker
 
 ```bash
 git clone https://github.com/your-username/aniflix-devops.git
 cd aniflix-devops
 docker build -t aniflix-app .
-docker run -d -p 8080:80 --name aniflix-container aniflix-app
+docker run -d -p 8080:80 aniflix-app
+````
+
+Open: [http://localhost:8080](http://localhost:8080)
+
+---
+
+## ☁️ Deploy on AWS EC2 (Manual)
+
+1. Launch Ubuntu EC2
+2. Open ports 22 (SSH) and 80 (HTTP)
+3. SSH into EC2:
+
+```bash
+ssh -i your-key.pem ubuntu@<EC2_PUBLIC_IP>
+```
+
+4. Install Docker and Git:
+
+```bash
+sudo apt update
+sudo apt install docker.io git -y
+```
+
+5. Clone repo and run app:
+
+```bash
+git clone https://github.com/your-username/aniflix-devops.git
+cd aniflix-devops
+sudo docker build -t aniflix-app .
+sudo docker run -d -p 80:80 aniflix-app
+```
+
+Open: `http://<EC2_PUBLIC_IP>`
+
+---
+
+## ⚙️ deploy.sh (Automated Setup)
+
+```bash
+chmod +x deploy.sh
+./deploy.sh
+```
+
+---
+
+## ⚡ cloud-init (Auto-run on EC2 boot)
+
+Paste this `cloud-init.yaml` in EC2 → Advanced Settings → User Data while launching instance.
+
+---
+
+## 🔐 IAM Role for S3 (Optional)
+
+* Attach a role with `AmazonS3FullAccess`
+* Run:
+
+```bash
+aws s3 ls
+```
+
+---
+
+## ✅ Done!
+
+
+![image](https://github.com/user-attachments/assets/38ad8f2f-59f1-4f2a-8355-c6a2bab3d8a9)
+
 
